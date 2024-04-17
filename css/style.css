@@ -1,0 +1,172 @@
+body {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  background-color: #c5ffff;
+  font-family: Arial, sans-serif;
+}
+
+.controlPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 300px;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+}
+.controlPanel .screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: auto; /* Enable horizontal scrolling on screen as new floors are added */
+  width: 90%;
+  height: 50%;
+  background-color: black;
+  margin-top: 5%;
+}
+.controlPanel .screen .FloorsOnScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #606060;
+  color: black;
+  font-size: 25px;
+  font-weight: bolder;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+.controlPanel .buttons {
+  display: flex;
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 60%;
+}
+.controlPanel .buttons .choices {
+  display: flex;
+  justify-content: space-evenly;
+}
+.controlPanel .buttons .choices .floorButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #606060;
+  color: black;
+  font-size: 25px;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+.controlPanel .buttons .startReset {
+  display: flex;
+  justify-content: space-evenly;
+}
+.controlPanel .buttons .startReset .startButton {
+  width: 30%;
+  height: 40px;
+  border-radius: 5px;
+  color: black;
+  font-size: 25px;
+  font-weight: bolder;
+  text-align: center;
+  background-color: #00ff47;
+}
+.controlPanel .buttons .startReset .resetButton {
+  width: 30%;
+  height: 40px;
+  border-radius: 5px;
+  color: black;
+  font-size: 25px;
+  font-weight: bolder;
+  text-align: center;
+  background-color: red;
+}
+
+.building {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 350px;
+  height: 96vh;
+  background-color: #80abff;
+}
+.building .floorsContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 93%;
+}
+.building .floorsContainer .floorContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 15%;
+}
+.building .floorsContainer .floorContainer .floor {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+  background-color: white;
+}
+.building .floorsContainer .floorContainer .floor .floorNum,
+.building .floorsContainer .floorContainer .floor .floorNumRight {
+  width: 22%;
+  border: 4px solid red;
+  background-color: rgba(255, 0, 0, 0.3);
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+.building .floorsContainer .floorContainer .floor .floorNumRight {
+  margin-left: 74.63px;
+}
+.building .floorsContainer .floorContainer .elevator {
+  width: 20%;
+  background-color: white;
+  border: 4px solid black;
+  transition: bottom 2s ease-in-out;
+  position: relative;
+  bottom: 0px;
+}
+.building .floorsContainer .floorContainer .elevator .elevatorDoorL,
+.building .floorsContainer .floorContainer .elevator .elevatorDoorR {
+  width: 0%;
+  min-height: 80.5%;
+  background-color: #585858;
+  position: absolute;
+}
+.building .floorsContainer .floorContainer .elevator .elevatorDoorL {
+  transition: width 0.5s ease-out, left 0.5s ease-out;
+  left: 0;
+}
+.building .floorsContainer .floorContainer .elevator .elevatorDoorR {
+  margin-left: 67px;
+  transition: width 0.5s ease-out, right 0.5s ease-out;
+  right: 0;
+}
+.building .floorsContainer .floorContainer .elevator .elevatorScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  background-color: #a8a8a8;
+  color: red;
+  border-bottom: 4px solid black;
+  font-size: 12px;
+  font-weight: bolder;
+}
+.building .ground {
+  width: 400px;
+  height: 30px;
+  background-color: black;
+}/*# sourceMappingURL=style.css.map */

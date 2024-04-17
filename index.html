@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Elevator</title>
+  </head>
+  <body>
+    <div class="controlPanel">
+      <div class="screen"></div>
+
+      <div class="buttons">
+        <div class="choices">
+          <button id="0" class="floorButton">F0</button>
+          <button id="1" class="floorButton">F1</button>
+          <button id="2" class="floorButton">F2</button>
+          <button id="3" class="floorButton">F3</button>
+          <button id="4" class="floorButton">F4</button>
+          <button id="5" class="floorButton">F5</button>
+        </div>
+
+        <div class="startReset">
+          <button class="startButton">Start</button>
+          <button class="resetButton">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="building">
+      <div class="floorsContainer">
+        <div id="floorContainer5" class="floorContainer">
+          <div id="floor5" class="floor"><div class="floorNum">F5</div></div>
+          <div id="floor5" class="floor">
+            <div class="floorNumRight">F5</div>
+          </div>
+        </div>
+
+        <div id="floorContainer4" class="floorContainer">
+          <div id="floor4" class="floor"><div class="floorNum">F4</div></div>
+          <div id="floor4" class="floor">
+            <div class="floorNumRight">F4</div>
+          </div>
+        </div>
+
+        <div id="floorContainer3" class="floorContainer">
+          <div id="floor3" class="floor"><div class="floorNum">F3</div></div>
+          <div id="floor3" class="floor">
+            <div class="floorNumRight">F3</div>
+          </div>
+        </div>
+
+        <div id="floorContainer2" class="floorContainer">
+          <div id="floor2" class="floor"><div class="floorNum">F2</div></div>
+          <div id="floor2" class="floor">
+            <div class="floorNumRight">F2</div>
+          </div>
+        </div>
+
+        <div id="floorContainer1" class="floorContainer">
+          <div id="floor1" class="floor"><div class="floorNum">F1</div></div>
+          <div id="floor1" class="floor">
+            <div class="floorNumRight">F1</div>
+          </div>
+        </div>
+
+        <div id="floorContainer0" class="floorContainer">
+          <div id="floor0" class="floor"><div class="floorNum">F0</div></div>
+          <div class="elevator">
+            <div class="elevatorScreen"></div>
+            <div class="elevatorDoorL"></div>
+            <div class="elevatorDoorR"></div>
+          </div>
+          <div id="floor0" class="floor">
+            <div class="floorNumRight">F0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ground"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
