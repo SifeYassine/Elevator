@@ -3,7 +3,6 @@ window.addEventListener("load", function loadHandler() {
   const screen = document.querySelector(".screen");
   const stepsScreen = document.querySelector(".stepsScreen");
   const elevator = document.querySelector(".elevator");
-  const elevatorScreen = document.querySelector(".elevatorScreen");
   const elevatorDoorL = document.querySelector(".elevatorDoorL");
   const elevatorDoorR = document.querySelector(".elevatorDoorR");
   const buttons = document.querySelector(".choices");
@@ -36,7 +35,6 @@ window.addEventListener("load", function loadHandler() {
         return;
       } else {
         requestedFloors.push(requestedFloor);
-        console.log(requestedFloors);
 
         // Create div elements to display the requested floors on the control screen
         const floorsOnScreen = document.createElement("div");
@@ -62,48 +60,30 @@ window.addEventListener("load", function loadHandler() {
   }
 
   // Moving the elevator to each floor in the sorted array
-  function moveNextFloor(nextFloor) {
-    // Calculate the target position of the next floor
-    const targetPosition = requestedFloors[nextFloor] * displacementUnit;
-    elevator.style.bottom = targetPosition + "px";
-    currentPosition = requestedFloors[nextFloor];
+  function moveNextFloor() {
+    // Get the next floor to move to
+    let nextFloor = requestedFloors.shift();
 
-    console.log(`targetPosition: ${requestedFloors[nextFloor]}`);
+    // Calculate the target position of the next floor
+    let targetPosition = nextFloor * displacementUnit;
+    elevator.style.bottom = targetPosition + "px";
+    currentPosition = nextFloor;
 
     // Open door when elevator reaches the floor
     setTimeout(openDoor, 2000);
     // Close door after a short delay
     setTimeout(closeDoor, 3500);
 
-    // Clear requestedFloors if the elevator has reached the last floor in the array
-    if (
-      targetPosition ===
-      requestedFloors[requestedFloors.length - 1] * displacementUnit
-    ) {
-      console.log(
-        `Requested floors cleared at floor ${
-          requestedFloors[requestedFloors.length - 1]
-        }`
-      );
-      requestedFloors = [];
-    }
-
-    // Move to the next floor after a delay
-    nextFloor++;
-    if (nextFloor < requestedFloors.length) {
-      // Function to apply the setTimeout to
-      function floorDelay() {
-        moveNextFloor(nextFloor);
-      }
-      // Delay before moving to the next floor
-      setTimeout(floorDelay, 4000);
+    // Move to the next floor if there are more floors to visit
+    if (requestedFloors.length > 0) {
+      setTimeout(moveNextFloor, 4000);
     }
   }
 
   // Moving the elevator
   function moveElevator() {
     // Start the motion of the elevator
-    moveNextFloor(nextFloor);
+    moveNextFloor();
   }
 
   function calculateSteps() {
@@ -114,9 +94,20 @@ window.addEventListener("load", function loadHandler() {
     stepsFloor.unshift(0);
 
     // Iterate through the stepsFloor array to calculate the total steps
-    for (let i = 0; i < stepsFloor.length - 1; i++) {
-      // Add the absolute value of the difference between two successive elements, then add them all to get the total steps
-      totalSteps = totalSteps + Math.abs(stepsFloor[i + 1] - stepsFloor[i]);
+    if (currentPosition === 0) {
+      for (let i = 0; i < stepsFloor.length - 1; i++) {
+        // Calculate the absolute value of the difference between each two successive elements, then add them all to get the total steps
+        totalSteps = totalSteps + Math.abs(stepsFloor[i + 1] - stepsFloor[i]);
+      }
+    } else {
+      // Remove 0 from the beginning of the array
+      stepsFloor.shift();
+      // Add currentPosition the beginning of the array
+      stepsFloor.unshift(currentPosition);
+
+      for (let i = 0; i < stepsFloor.length - 1; i++) {
+        totalSteps = totalSteps + Math.abs(stepsFloor[i + 1] - stepsFloor[i]);
+      }
     }
     return totalSteps;
   }

@@ -72,7 +72,7 @@ body {
 
   .screen {
     @include flexJustifyAlignCenter;
-    overflow-x: auto; /* Enable horizontal scrolling on screen as new floors are added */
+    overflow-x: auto; /* Enable horizontal scrolling on screen as new floors are added to it*/
     width: 90%;
     height: 50%;
     background-color: black;
@@ -82,10 +82,6 @@ body {
       @include flexJustifyAlignCenter;
       @include floorButtonsWidthHeight;
       margin: 0 5px;
-    }
-
-    .active {
-      border: 4px solid red;
     }
   }
 
