@@ -10,6 +10,11 @@ window.addEventListener("load", function loadHandler() {
   const startButton = document.querySelector(".startButton");
   const resetButton = document.querySelector(".resetButton");
 
+  // Get the current position (from computed bottom style) of the elevator
+  let computedStyle = getComputedStyle(elevator);
+  // Covert the computed bottom style to a number
+  let currentPosition = parseInt(computedStyle.bottom);
+
   let requestedFloors = [];
   let nextFloor = 0;
 
@@ -23,7 +28,11 @@ window.addEventListener("load", function loadHandler() {
       // Retrieve the id of the clicked button, convert it to a number, & add it to requested floors array
       const requestedFloor = Number(clickedButton.textContent[1]);
 
-      if (requestedFloors.length === 0 && requestedFloor === 0) {
+      if (
+        requestedFloors.length === 0 &&
+        requestedFloor === 0 &&
+        currentPosition === 0
+      ) {
         return;
       } else {
         requestedFloors.push(requestedFloor);
@@ -57,6 +66,7 @@ window.addEventListener("load", function loadHandler() {
     // Calculate the target position of the next floor
     const targetPosition = requestedFloors[nextFloor] * displacementUnit;
     elevator.style.bottom = targetPosition + "px";
+    currentPosition = requestedFloors[nextFloor];
 
     console.log(`targetPosition: ${requestedFloors[nextFloor]}`);
 
@@ -113,7 +123,10 @@ window.addEventListener("load", function loadHandler() {
 
   // Start the elevator movement when the start button is clicked
   startButton.addEventListener("click", function startHandler() {
-    if (requestedFloors.length !== 0 && requestedFloors[0] !== 0) {
+    if (
+      (requestedFloors.length !== 0 && requestedFloors[0] !== 0) ||
+      currentPosition !== 0
+    ) {
       closeDoor();
       // Wait 500ms before moving the elevator
       setTimeout(moveElevator, 500);
